@@ -2,7 +2,7 @@ import sqlite3
 
 
 def dbConnection():
-    conn = sqlite3.connect('test11.db')
+    conn = sqlite3.connect('test111.db')
     print("Opened database successfully")
     return conn
 
@@ -14,9 +14,14 @@ def createBaseTable(conn):
     print("Table created successfully")
 
 def getMaxVersion():
+    return 
 
-def recordNewVersion(conn, version):
-
+def recordNewVersion(conn, id, version, remarks):
+    sql = "INSERT INTO ZSCALER_VERSIONS(ID,VERSION,REMARKS)values(?,?,?)"
+    cur = conn.cursor()
+    cur.execute(sql,(id,version,remarks))
+    conn.commit()
+    return
 
 def closeConnection(conn):
     conn.close()
